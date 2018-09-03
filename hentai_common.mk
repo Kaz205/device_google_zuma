@@ -9,3 +9,6 @@ $(call inherit-product, vendor/hentai/build/product/hentai_product.mk)
 
 # Overlays
 DEVICE_PACKAGE_OVERLAYS += device/google/zuma/overlay-hentai
+
+# Google Assistant
+PRODUCT_PRODUCT_PROPERTIES += ro.opa.eligible_device=true
