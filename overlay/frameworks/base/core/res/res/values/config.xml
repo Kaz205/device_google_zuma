@@ -237,9 +237,6 @@
     <!-- Auto-brightness sensor type string -->
     <string name="config_displayLightSensorType">"com.google.sensor.auto_brightness"</string>
 
-    <!-- Should the pinner service pin the Camera application? -->
-    <bool name="config_pinnerCameraApp">true</bool>
-
     <!-- The default intensity level for alarm vibrations. See
          Settings.System.ALARM_VIBRATION_INTENSITY more details on the constant values and
          meanings. -->
