@@ -6,3 +6,6 @@
 
 # HOS vendor
 $(call inherit-product, vendor/hentai/build/product/hentai_product.mk)
+
+# Overlays
+DEVICE_PACKAGE_OVERLAYS += device/google/zuma/overlay-hentai
