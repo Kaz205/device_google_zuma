@@ -16,6 +16,7 @@
 
 -include vendor/google_devices/zuma/proprietary/telephony/device-vendor.mk
 include device/google/zuma/device.mk
+include device/google/zuma/device-common-aospa.mk
 
 # Telephony
 PRODUCT_COPY_FILES += \
