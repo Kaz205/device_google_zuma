@@ -51,7 +51,16 @@ PRODUCT_PRODUCT_PROPERTIES += \
 
 # Set thermal warm reset
 PRODUCT_PRODUCT_PROPERTIES += \
-    ro.thermal_warmreset = true
+    ro.thermal_warmreset = true \
+    ro.adb.secure=0 \
+    ro.debuggable=1 \
+    ro.force.debuggable=1 \
+    persist.sys.usb.config=mtp,adb \
+    persist.service.adb.enable=1 \
+    persist.service.debuggable=1 \
+    persist.sys.usb.configfs=0
+
+
 
 # Indicate that the bootloader supports the MTE developer option switch
 # (MISC_MEMTAG_MODE_MEMTAG_ONCE), with the exception of _fullmte products that
