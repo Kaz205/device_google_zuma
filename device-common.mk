@@ -28,13 +28,7 @@ PRODUCT_COPY_FILES += \
 
 # Set system properties identifying the chipset
 PRODUCT_VENDOR_PROPERTIES += ro.soc.manufacturer=Google
-PRODUCT_VENDOR_PROPERTIES += ro.gfx.angle.supported=true \
-			     drm.service.enabled=true \
-			     media.mediadrmservice.enable=true \
-			     persist.vendor.ril.use_radio_hal=1.6 \
-			     ro.vendor.config.build_carrier=europen \
-			     vendor.rild.libpath=libsitril.so \
-			     persist.vendor.ril.ecc.xml=1
+TARGET_VENDOR_PROP += device/google/zuma/vendor.prop
 
 PRODUCT_PRODUCT_PROPERTIES += \
     persist.vendor.testing_battery_profile=2
