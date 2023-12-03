@@ -601,6 +601,9 @@ include device/google/gs-common/battery_mitigation/bcl.mk
 # Enable project quotas and casefolding for emulated storage without sdcardfs
 $(call inherit-product, $(SRC_TARGET_DIR)/product/emulated_storage.mk)
 
+# Enable 64-bit mediaserver
+PRODUCT_VENDOR_PROPERTIES += ro.mediaserver.64b.enable=true
+
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/android_t_baseline.mk)
 PRODUCT_VIRTUAL_AB_COMPRESSION_METHOD := gz
 
