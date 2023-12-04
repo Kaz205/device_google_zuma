@@ -102,7 +102,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 PRODUCT_SOONG_NAMESPACES += \
 	vendor/samsung_slsi/telephony/$(BOARD_USES_SHARED_VENDOR_TELEPHONY)
 
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 #Set IKE logs to verbose for WFC
 PRODUCT_PROPERTY_OVERRIDES += log.tag.IKE=VERBOSE
 
@@ -121,7 +121,7 @@ PRODUCT_PROPERTY_OVERRIDES += log.tag.ShannonQNS-HC=DEBUG
 include device/google/zuma/modem/userdebug.mk
 endif
 
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 # b/36703476: Set default log size to 1M
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.logd.size=1M
@@ -204,7 +204,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	telephony.active_modems.max_count=2
 
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.vendor.usb.displayport.enabled=0
 else
@@ -342,7 +342,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
 	device/google/zuma/conf/init.zuma.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/hw/init.zuma.rc
 
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_COPY_FILES += \
 	device/google/zuma/conf/init.debug.rc:$(TARGET_COPY_OUT_VENDOR)/etc/init/init.debug.rc
 PRODUCT_COPY_FILES += \
@@ -386,7 +386,7 @@ PRODUCT_PACKAGES += \
 	android.hardware.contexthub-service.generic
 
 # CHRE tools
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PACKAGES += \
 	chre_power_test_client \
 	chre_test_client
@@ -412,7 +412,7 @@ PRODUCT_PACKAGES += \
 	checkpoint_gc
 
 # Vendor verbose logging default property
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.vendor.verbose_logging_enabled=true
 else
@@ -430,7 +430,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	persist.vendor.sys.modem.logging.enable=true
 
 # Enable silent CP crash handling
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.vendor.ril.crash_handling_mode=1
 else
@@ -480,7 +480,7 @@ PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/android.software.midi.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.software.midi.xml
 
 # default usb debug functions
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.vendor.usb.usbradio.config=dm
 endif
@@ -583,12 +583,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
         ConnectivityOverlay
 
-PRODUCT_PACKAGES_DEBUG += \
-	f2fs_io \
-	check_f2fs \
-	f2fs.fibmap \
-	dump.f2fs
-
 # Storage health HAL
 PRODUCT_PACKAGES += \
 	android.hardware.health.storage-service.default
@@ -614,9 +608,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/generic_ramdisk.mk)
 ifeq (,$(filter true, $(BOARD_WITHOUT_DTLS)))
 include device/google/gs-common/dauntless/gsc.mk
 endif
-
-PRODUCT_PACKAGES_DEBUG += \
-	WvInstallKeybox
 
 # Copy Camera HFD Setfiles
 #PRODUCT_COPY_FILES += \
@@ -661,7 +652,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	debug.slsi_platform=1 \
 	debug.hwc.winupdate=1
 
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PACKAGES += displaycolor_service
 endif
 
@@ -735,7 +726,7 @@ PRODUCT_PACKAGES += wpa_supplicant.conf
 
 WIFI_PRIV_CMD_UPDATE_MBO_CELL_STATUS := enabled
 
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PACKAGES += wpa_cli
 PRODUCT_PACKAGES += hostapd_cli
 endif
@@ -813,12 +804,6 @@ endif
 $(call inherit-product, system/core/trusty/trusty-storage.mk)
 $(call inherit-product, system/core/trusty/trusty-base.mk)
 
-# Trusty unit test tool
-PRODUCT_PACKAGES_DEBUG += \
-   trusty-ut-ctrl \
-   tipc-test \
-   trusty_stats_test \
-
 include device/google/gs101/confirmationui/confirmationui.mk
 
 # Trusty Metrics Daemon
@@ -838,7 +823,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.frp.pst=/dev/block/by-name/frp
 
 # System props to enable Bluetooth Quality Report (BQR) feature
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PRODUCT_PROPERTIES += \
 	persist.bluetooth.bqr.event_mask?=262174 \
 	persist.bluetooth.bqr.min_interval_ms=500
@@ -879,7 +864,7 @@ PRODUCT_PACKAGES += \
 	Iwlan
 
 #Iwlan test app for userdebug/eng builds
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PACKAGES += \
 	IwlanTestApp
 endif
@@ -900,10 +885,6 @@ PRODUCT_PACKAGES += \
 $(call inherit-product-if-exists, vendor/samsung_slsi/telephony/$(BOARD_USES_SHARED_VENDOR_TELEPHONY)/shannon-ims/device-vendor.mk)
 
 PRODUCT_PACKAGES += ShannonIms
-
-#RCS Test Messaging App
-PRODUCT_PACKAGES_DEBUG += \
-	TestRcsApp
 
 PRODUCT_PACKAGES += ShannonRcs
 
@@ -957,7 +938,7 @@ PRODUCT_PACKAGES += modem_svc_sit
 PRODUCT_PACKAGES += modem_ml_svc_sit
 
 # modem ML models configs
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_COPY_FILES += \
 	device/google/zuma/modem_ml/modem_ml_models_userdebug.conf:$(TARGET_COPY_OUT_VENDOR)/etc/modem_ml_models.conf
 else
@@ -981,13 +962,6 @@ endif
 
 # ARM NN files
 ARM_COMPUTE_CL_ENABLE := 1
-
-# Vibrator Diag
-PRODUCT_PACKAGES_DEBUG += \
-	diag-vibrator \
-	diag-vibrator-cs40l25a \
-	diag-vibrator-drv2624 \
-	$(NULL)
 
 PRODUCT_PACKAGES += \
 	android.hardware.health-service.zuma \
@@ -1022,7 +996,7 @@ PRODUCT_PACKAGES += vndservicemanager
 PRODUCT_PACKAGES += vndservice
 
 ## TinyTools, debug tool and cs35l41 speaker calibration tool for Audio
-ifneq (,$(filter userdebug eng, $(TARGET_BUILD_VARIANT)))
+ifneq (,$(filter eng, $(TARGET_BUILD_VARIANT)))
 PRODUCT_PACKAGES += \
 	tinyplay \
 	tinycap \
@@ -1117,9 +1091,6 @@ USES_RADIOEXT_V1_6 = true
 # Wifi ext
 include hardware/google/pixel/wifi_ext/device.mk
 
-# Battery Stats Viewer
-PRODUCT_PACKAGES_DEBUG += BatteryStatsViewer
-
 # Install product specific framework compatibility matrix
 # (TODO: b/169535506) This includes the FCM for system_ext and product partition.
 # It must be split into the FCM of each partition.
@@ -1143,9 +1114,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Hardware Info Collection
 include hardware/google/pixel/HardwareInfo/HardwareInfo.mk
-
-# UFS: the script is used to select the corresponding firmware to run FFU.
-PRODUCT_PACKAGES_DEBUG += ufs_firmware_update.sh
 
 # RIL extension service
 ifeq (,$(filter aosp_% factory_%,$(TARGET_PRODUCT)))

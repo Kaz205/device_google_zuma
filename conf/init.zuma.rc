@@ -713,11 +713,6 @@ service abox /vendor/bin/main_abox 17c50000.abox
     group audioserver
     seclabel u:r:abox:s0
 
-# on userdebug and eng builds, enable kgdb on the serial console
-on property:ro.debuggable=1
-    write /sys/module/kgdboc/parameters/kgdboc ttyFIQ1
-    write /sys/module/fiq_debugger/parameters/kgdb_enable 1
-
 # Touch
 on property:vendor.device.modules.ready=1
     chown system system /sys/class/spi_master/spi20/spi20.0/stm_fts_cmd
