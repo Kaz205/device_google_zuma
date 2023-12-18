@@ -42,6 +42,7 @@ BOARD_KERNEL_CMDLINE += rcupdate.rcu_expedited=1 rcu_nocbs=all
 BOARD_KERNEL_CMDLINE += swiotlb=1024
 BOARD_KERNEL_CMDLINE += cgroup.memory=nokmem
 BOARD_KERNEL_CMDLINE += sysctl.kernel.sched_pelt_multiplier=4
+BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
 ifeq (,$(filter %_fullmte,$(TARGET_PRODUCT)))
 BOARD_KERNEL_CMDLINE += kasan=off
 endif
