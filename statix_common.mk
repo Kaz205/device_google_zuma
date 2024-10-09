@@ -4,11 +4,12 @@
 # SPDX-License-Identifier: Apache-2.0
 #
 
-# HOS vendor
-$(call inherit-product, vendor/hentai/build/product/hentai_product.mk)
+# Statix vendor
+$(call inherit-product, vendor/statix/config/common.mk)
+$(call inherit-product, vendor/statix/config/gsm.mk)
 
 # Overlays
-DEVICE_PACKAGE_OVERLAYS += device/google/zuma/overlay-hentai
+DEVICE_PACKAGE_OVERLAYS += device/google/zuma/overlay-statix
 
 # AiAi Config
 PRODUCT_COPY_FILES += \
