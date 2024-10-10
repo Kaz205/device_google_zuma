@@ -102,6 +102,8 @@ ifeq ($(RELEASE_AVF_ENABLE_LLPVM_CHANGES),true)
 	endif
 endif
 
+SECRETKEEPER_ENABLED := false
+
 # OEM Unlock reporting
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	ro.oem_unlock_supported=1
