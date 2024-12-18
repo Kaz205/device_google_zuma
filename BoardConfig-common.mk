@@ -34,8 +34,6 @@ TARGET_ARCH_VARIANT := armv8-2a-dotprod
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_VARIANT := cortex-a55
 
-TARGET_KERNEL_DIR := device/google/shusky-kernels/5.15/24Q4-12506254
-
 BOARD_KERNEL_CMDLINE += earlycon=exynos4210,0x10870000 console=ttySAC0,115200 androidboot.console=ttySAC0 printk.devkmsg=on
 BOARD_KERNEL_CMDLINE += cma_sysfs.experimental=Y
 BOARD_KERNEL_CMDLINE += cgroup_disable=memory

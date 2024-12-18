@@ -51,9 +51,6 @@ include device/google/zuma/dumpstate/item.mk
 TARGET_BOARD_PLATFORM := zuma
 ALLOW_MISSING_DEPENDENCIES := true
 
-TARGET_KERNEL_DIR := device/google/shusky-kernels/5.15/24Q4-12506254
-TARGET_LINUX_KERNEL_VERSION := 5.15
-
 AB_OTA_POSTINSTALL_CONFIG += \
 	RUN_POSTINSTALL_system=true \
 	POSTINSTALL_PATH_system=system/bin/otapreopt_script \
